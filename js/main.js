@@ -188,6 +188,7 @@ class Calculator {
         {
           copy_to_clipboard(result);
           this.display.innerText = 'CLIPBOARD';
+          this.lval = '0';
           return;
         }
         else
