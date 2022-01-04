@@ -1,7 +1,7 @@
 /* Remove 3D effect */
 * {
     border-radius: 0 !important;
-    background-color: wheat;
+    background-color: #303033;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 /* Layout */
@@ -11,22 +11,19 @@
     vertical-align: middle;
     display: flex;
     width: 300px;
-    height: 374px;
-    background-color: #5a5a5a;
-    padding: 8px;
-    border: #212124 solid 5px;
+    height: 364px;
+    background-color: #212124;
     /* border:steelblue solid 5px; */
     flex-direction: column;
 }
 .calculator-display{
     /* border:blue solid 1px;  */
     /* margin-right: auto; */
-    background-color: #284b01;
+    background-color: #212124;
     max-width: 300px;
     font-size: 50px;
-    padding-right: 5px;
-    color: #242424;
-    margin-bottom: 5px;
+    color: #ffffff;
+    margin-bottom: 1px;
     text-align: right;
 }
 .calculator-buttons{
