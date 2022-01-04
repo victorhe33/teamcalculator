@@ -76,17 +76,15 @@ class Calculator {
 
     if (current_value.length < max_numbers_on_display)
     {
-      if (num != 0)
-        {
-          if (current_value[0] == '0' && !current_value.includes(decimal.description[0]))
-            current_value = num;
-          else
-            current_value += num;
-        }
-        else  {
-          if (current_value.includes(decimal.description[0]) || current_value.length == '0' || current_value[0] !== '0')
-            current_value+=num;
-        }
+      if (num != 0) {
+        if (current_value[0] == '0' && !current_value.includes(decimal.description[0]))
+          current_value = num;
+        else
+          current_value += num;
+      } else {
+        if (current_value.includes(decimal.description[0]) || current_value.length == 0 || current_value[0] !== '0')
+          current_value+=num;
+      }
     }
 
     if (this.operator)
@@ -122,7 +120,11 @@ class Calculator {
     if (current_value[0] == '-')
       current_value = current_value.slice(1);
     else
-      current_value = '-' + current_value;
+    {
+      if (!current_value[0] == '0')
+        current_value = '-' + current_value;
+    }
+      
 
     if (this.operator)
       this.rval = current_value;
@@ -207,11 +209,14 @@ class Calculator {
   {
     if (zero_display) {this.display.innerText = '0'; return;}
 
-
     if (this.operator && this.rval.length > 0)
       this.display.innerText = this.rval;
     else
-      this.display.innerText = this.lval;
+    {
+      if (this.lval.length == 0) this.display.innerText = '0'
+      else this.display.innerText = this.lval;
+    }
+      
   }
 
 
