@@ -1,9 +1,20 @@
+// Utils
+
+function copy_to_clipboard(text) {
+  const copyElement = document.createElement('textarea');
+  copyElement.value = text;
+  document.body.appendChild(copyElement);
+  copyElement.select();
+  copyElement.setSelectionRange(0, 99999); /* For mobile devices? */
+  document.execCommand('copy');
+  document.body.removeChild(copyElement);
+}
 
 // Operations
 const addition = Symbol(['+', '+'])
 const subtraction = Symbol(['-', '-'])
 const multiplication = Symbol(['*', 'x'])
-const division = Symbol(['/', '⁒'])
+const division = Symbol(['/', '÷'])
 
 // Functions
 const clear = Symbol('AC')
@@ -13,6 +24,8 @@ const percent = Symbol('%')
 // Symbols
 const decimal = Symbol(['.','.']) // second member could be used for locale translation?
 
+// Settings
+const max_numbers_on_display = 9;
 
 class Calculator {
   constructor(display)
@@ -30,18 +43,54 @@ class Calculator {
     this.operator = undefined;
   }
 
+  do_special_op(op)
+  {
+    switch(op) {
+      case '80085': // Show current time on calculator display
+      {
+        var now = new Date();
+        var current_time = now.getHours() + ':' + now.getMinutes();
+        return current_time;
+      }
+        
+      case '43110':
+        break;
+      case '69420':
+        break;
+      default:
+        break;
+    }
+  }
+
   calculate()
   {
+    if (this.lval.length == 0) this.lval = "0";
     var operation = this.lval + this.operator.description[0] + this.rval 
-    return eval(operation)
+    return eval(operation);
   }
 
   append_number(num)
   {
+    var current_value = this.operator ? this.rval : this.lval;
+    current_value = current_value.toString();
+
+    if (current_value.length < max_numbers_on_display)
+    {
+      if (num != 0) {
+        if (current_value[0] == '0' && !current_value.includes(decimal.description[0]))
+          current_value = num;
+        else
+          current_value += num;
+      } else {
+        if (current_value.includes(decimal.description[0]) || current_value.length == 0 || current_value[0] !== '0')
+          current_value+=num;
+      }
+    }
+
     if (this.operator)
-      this.rval+=num;
+      this.rval = current_value;
     else
-      this.lval+=num;
+      this.lval = current_value;
 
     this.refresh_display();
   }
@@ -49,23 +98,38 @@ class Calculator {
   append_decimal()
   {
     var decimal_symbol = decimal.description[0];
-    if (this.operator) { if (! this.rval.includes(decimal_symbol)) {this.rval+=decimal_symbol} }
-    else { if (! this.lval.includes(decimal_symbol)) {this.lval+=decimal_symbol} }
+    var current_value = this.operator ? this.rval : this.lval;
+    current_value = current_value.toString();
+
+    if ( ! current_value.includes(decimal_symbol))
+      current_value+=decimal_symbol;
+
+    if (this.operator)
+      this.rval = current_value;
+    else
+      this.lval = current_value;
+
     this.refresh_display();
   }
 
   set_sign()
   {
-    if (this.operator)
-      if (this.rval[0] == '-')
-        this.rval = this.rval.slice(1);
-      else
-        this.rval = '-' + this.rval;
+    var current_value = this.operator ? this.rval : this.lval;
+    current_value = current_value.toString();
+
+    if (current_value[0] == '-')
+      current_value = current_value.slice(1);
     else
-      if (this.lval[0] == '-')
-        this.lval = this.lval.slice(1);
-      else
-        this.lval = '-' + this.lval;
+    {
+      if (!current_value[0] == '0')
+        current_value = '-' + current_value;
+    }
+      
+
+    if (this.operator)
+      this.rval = current_value;
+    else
+      this.lval = current_value;
   }
   
   set_percent()
@@ -115,10 +179,25 @@ class Calculator {
         break;
 
       case 'calculate':
-        var result = this.calculate();
+      {
+        var result = 'ERR';
+        if (this.rval.length > 0)
+          result = this.calculate();
+        else
+          result = this.do_special_op(this.lval);
         this.clear(true);
-        this.lval = result;
+        if (result.toString().length > max_numbers_on_display)
+        {
+          copy_to_clipboard(result);
+          this.display.innerText = 'CLIPBOARD';
+          this.lval = '0';
+          return;
+        }
+        else
+          this.lval = result;
         break;
+      }
+        
 
       default:
         break;
@@ -130,12 +209,14 @@ class Calculator {
   {
     if (zero_display) {this.display.innerText = '0'; return;}
 
-    this.display.innerText = this.lval;
-
-    if (this.operator)
-      this.display.innerText += this.operator.description[2];
-
-    this.display.innerText += this.rval;
+    if (this.operator && this.rval.length > 0)
+      this.display.innerText = this.rval;
+    else
+    {
+      if (this.lval.length == 0) this.display.innerText = '0'
+      else this.display.innerText = this.lval;
+    }
+      
   }
 
 
