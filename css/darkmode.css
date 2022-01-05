@@ -11,7 +11,7 @@
     vertical-align: middle;
     display: flex;
     width: 300px;
-    height: 384px;
+    min-height: 384px;
     background-color: #44494c;
     padding: 8px;
     border-radius: 15px;
@@ -39,7 +39,7 @@
     text-align: center;
     display: flex;
     flex-flow: row;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     flex-wrap: wrap;
     flex-shrink: 1;
 }
