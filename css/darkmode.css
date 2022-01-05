@@ -39,6 +39,7 @@
     text-align: center;
     display: flex;
     flex-flow: row;
+    border-radius: 15px;
     flex-wrap: wrap;
     flex-shrink: 1;
 }
