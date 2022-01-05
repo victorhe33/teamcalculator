@@ -8,6 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="css/stylesheet.css">
 </head>
 
@@ -26,7 +27,7 @@
       <button class="number">7</button>
       <button class="number">8</button>
       <button class="number">9</button>
-      <button class="operator" data-action="multiply">×</button>
+      <button class="operator" data-action="multiply">x</button>
 
       <button class="number">4</button>
       <button class="number">5</button>
@@ -44,6 +45,33 @@
 
   </div>
 
+  <div class="legend">
+    <span class="instructions">To enable bug, enter number and press =</span>
+
+    <div class="list">
+      <ul>
+
+        <li>
+          <i class="material-icons" id="jsicon">bug_report</i> 
+          80085 = to enable Clock
+        </li>
+
+        <li>
+          <i class="material-icons" id="cssicon">bug_report</i>
+          43110 = to enable Buttons
+        </li>
+
+        <li>
+          <i class="material-icons" id="htmlicon">bug_report</i>
+          69420 = to enable Html
+        </li>
+        
+      </ul>
+
+      <button class="mode" data-action="changemode">Mode:Dark</button>
+    </div>
+
+  </div>
 </body>
 <script src="js/main.js"></script>
 </html>
