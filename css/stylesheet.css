@@ -1,9 +1,60 @@
 /* Remove 3D effect */
+:root {
+    --bg: wheat;
+    --bg-calc:#5a5a5a;
+    --border-calc: #212124;
+    --bg-calc-disp: #284b01;
+    --color-calc-disp: black;
+    --border-calc-disp: var(--color-calc-disp);
+    --bg-calc-btn: #8b8a8a;
+    --color-calc-btn: white;
+    --border-calc-btn-act: var(--bg-calc-btn);
+    --bg-calc-btn-func: rgb(75,73,73);
+    --bg-calc-btn-op: #FFAE42;
+    --bg-calc-btn-func-hov:rgb(58, 57, 57);
+    --bg-calc-btn-num-hov:#6d6c6c;
+    --bg-calc-btn-op-hov:#e29a3d;
+    --bg-calc-btn-calc: var(--bg-calc-btn-op-hov);
+    --bg-calc-btn-func-act:var(--bg-calc-btn-func-hov);
+    --calc-btn-func-border-act:var(--color-calc-btn);
+    --bg-calc-btn-num-act:var(--bg-calc-btn-num-hov);
+    --calc-btn-num-act-border:var(--bg-calc-btn);
+    --bg-calc-btn-calc-act: var(--bg-calc-btn-op-hov);
+    --calc-btn-calc-act: var(--bg-calc-btn-op); 
+}
+.darkmode{
+    --bg:#181a1b;
+    --bg-calc:#44494c;
+    --border-calc: #81776a;
+    --bg-calc-disp: #203c01;
+    --color-calc-disp: white;
+    --border-calc-disp: #8c8273;
+    --bg-calc-btn: #5a6165;
+    --color-calc-btn: white;
+    --border-calc-btn-act: var(--bg-calc-btn);
+    --bg-calc-btn-func: #383c3f;
+    --bg-calc-btn-op: #a45e00;
+    --bg-calc-btn-func-hov:rgb(58, 57, 57);
+    --bg-calc-btn-num-hov:#6d6c6c;
+    --bg-calc-btn-op-hov:#e29a3d;
+    --bg-calc-btn-calc: var(--bg-calc-btn-op-hov);
+    --bg-calc-btn-func-act:var(--bg-calc-btn-func-hov);
+    --calc-btn-func-border-act:var(--color-calc-btn);
+    --bg-calc-btn-num-act:var(--bg-calc-btn-num-hov);
+    --calc-btn-num-act-border:var(--bg-calc-btn);
+    --bg-calc-btn-calc-act: var(--bg-calc-btn-op-hov);
+    --calc-btn-calc-act: var(--bg-calc-btn-op); 
+}
 * {
-    border-radius: 0 !important;
-    background-color: wheat;
+    border-radius: 0;
+    background-color: var(--bg);
+    border: none;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
+body {
+    display: flex;
+    flex-direction: column;
+}
 /* Layout */
 .calculator{
     margin-left: auto;
@@ -11,29 +62,33 @@
     vertical-align: middle;
     display: flex;
     width: 300px;
-    height: 374px;
-    background-color: #5a5a5a;
+    min-height: 384px;
+    background-color: var(--bg-calc);
     padding: 8px;
-    border: #212124 solid 5px;
+    border: var(--border-calc) solid 5px;
+    border-radius: 25px;
     /* border:steelblue solid 5px; */
     flex-direction: column;
 }
 .calculator-display{
     /* border:blue solid 1px;  */
     /* margin-right: auto; */
-    background-color: #284b01;
+    background-color: var(--bg-calc-disp);
     max-width: 300px;
     font-size: 50px;
     padding-right: 5px;
-    color: #242424;
+    color: var(--color-calc-disp);
     margin-bottom: 5px;
+    /* border-radius: 15px; */
     text-align: right;
+    border:var(--border-calc-disp) 5px solid;
 }
 .calculator-buttons{
     border: none;
     gap:1px;
-    background-color: #212124;
+    background-color: inherit;
     text-align: center;
+    border-radius: 15px;
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
@@ -41,19 +96,24 @@
 }
 .calculator-buttons button{
 /*    padding-left: 28px;
-   padding-right: 28px; */
+   padding-right: 28px; 
+   border-radius: 10px; */
    padding-top: 15px;
    padding-bottom: 15px; 
    max-height: 60px;
-   background-color: #8b8a8a;
+   background-color: var(--bg-calc-btn);
    width: 74px;
    font-size: 25px;
-   color: white;
+   color: var(--color-calc-btn);
    border:none;
+}
+.calculator-buttons button:active{
+    transform: scale(0.9,0.9);
+    border: var(--bg-calc-btn) solid 2px;
 }
 /* Colours */
 .calculator-buttons .function{
-    background-color: rgb(75, 73, 73);
+    background-color: var(--bg-calc-btn-func);
     flex-grow: 1;
 }
 .calculator-buttons .number{
@@ -61,49 +121,67 @@
 }
 .calculator-buttons .operator{
     flex-grow: 1;
-    background-color: #FFAE42;
+    background-color: var(--bg-calc-btn-op);
 }
 /* Hover and Click events */
 .calculator-buttons .function:hover{
-    background-color: rgb(58, 57, 57);
+    background-color: var(--bg-calc-btn-func-hov);
 }
 .calculator-buttons .number:hover{
-    background-color: #6d6c6c;
+    background-color: var(--bg-calc-btn-num-hov);
 }
 .calculator-buttons .operator:hover{
-    background-color: #e29a3d;
+    background-color: var(--bg-calc-btn-op-hov);
 }
 .calculator-buttons [data-action="calculate"]:hover{
-    background-color: #e29a3d;
+    background-color: var(--bg-calc-btn-op-hov);
 }
 .calculator-buttons .function:active{
-    background-color: rgb(58, 57, 57);
-    border: rgb(75, 73, 73) solid 2px;
+    background-color: var(--bg-calc-btn-func-hov);
+    border: var(--color-calc-btn) solid 2px;
     transform: scale(0.9,0.9);
 }
 .calculator-buttons .number:active{
-    background-color: #6d6c6c;
-    border: #8b8a8a solid 2px;
+    background-color: var(--bg-calc-btn-num-hov);
+    border: var(--bg-calc-btn) solid 2px;
     transform: scale(0.9,0.9);
 }
 .calculator-buttons .operator:active{
-    background-color: #e29a3d;
-    border: #FFAE42 solid 2px;
+    background-color: var(--bg-calc-btn-op-hov);
+    border: var(--bg-calc-btn-op) solid 2px;
     /* transform: scale(0.9,0.9); */
     transform: scale(0.9,0.9);
 }
 .calculator-buttons [data-action="calculate"]:active{
-    background-color: #e29a3d;
-    border: #FFAE42 solid 2px;
+    background-color: var(--bg-calc-btn-op-hov);
+    border: var(--bg-calc-btn-op) solid 2px;
     transform: scale(0.9,0.9);
 }
-/* !!Special Buttons (Moving will break styling)!! */
+/* !!Special Buttons (Moving will break styling)!! Keep below calculator stuff! */
 .calculator-buttons [data-action="decimal"]{
     flex-grow:0;
     margin-left: 0px;
 }
+.calculator-buttons [data-action="clear"]{
+    border-radius: 15px 0 0 0;
+}
+.calculator-buttons [data-action="divide"]{ border-radius: 0 15px 0 0;}
+.calculator-buttons [data-action="changemode"]{ border-radius: 0 0 0 15px;}
 .calculator-buttons [data-action="calculate"]{
     margin-left: 0.5px;
     flex-grow: 0;
-    background-color: #FFAE42;
+    background-color: var(--bg-calc-btn-op);
+    border-radius: 0 0 15px 0;
+}
+/* Legend Styling */
+.mode:hover {
+    background-color: var(--bg-calc-btn-num-hov);
+}
+.legend {
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
 }
