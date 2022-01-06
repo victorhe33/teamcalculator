@@ -45,6 +45,16 @@
     --bg-calc-btn-calc-act: var(--bg-calc-btn-op-hov);
     --calc-btn-calc-act: var(--bg-calc-btn-op); 
 }
+@font-face{
+    font-family: Digital7;
+    src: url(/teamcalculator/css/fonts/digital-7.ttf);
+}
+.broken.calculator-buttons button:active{
+    animation-name: runaway-btns, circle;
+    animation-duration: 0.25s, 1.5s;
+    animation-delay: 0s, 0.25s;
+    animation-iteration-count: 1, infinite;
+}
 * {
     border-radius: 0;
     background-color: var(--bg);
@@ -76,6 +86,7 @@ body {
     background-color: var(--bg-calc-disp);
     max-width: 300px;
     font-size: 50px;
+    font-family: Digital7, sans-serif;
     padding-right: 5px;
     color: var(--color-calc-disp);
     margin-bottom: 5px;
@@ -180,8 +191,30 @@ body {
 .legend {
     background-color: var(--bg);
     display: flex;
+    font-size: 22px;
     flex-direction: column;
     margin-right: auto;
     margin-left: auto;
     margin-top: 30px;
+}
+@keyframes runaway-btns {
+    from { transform: translateX(0) }
+    to { transform: translateX(-165px); }
+}
+@keyframes circle{
+    from{
+      transform:rotate(0deg)
+                translate(-165px)
+                rotate(0deg);
+    
+    }
+    to{
+      transform:rotate(360deg)
+                translate(-165px)
+                rotate(-360deg);
+    }
+  }
+@keyframes spin {
+    from {transform: rotate(0deg);}
+    to{transform: rotate(360deg);}
 }
