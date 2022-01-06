@@ -23,7 +23,7 @@
 }
 @font-face{
     font-family: Digital7;
-    src: url(/fonts/digital-7.ttf);
+    src: url(/teamcalculator/css/fonts/digital-7.ttf);
 }
 .broken.calculator-buttons button:active{
     animation-name: runaway-btns, circle;
