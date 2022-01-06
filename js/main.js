@@ -62,6 +62,20 @@ class Calculator {
     }
   }
 
+  get_current_value()
+  {
+    var current_value = this.operator ? this.rval : this.lval;
+    return current_value.toString();
+  }
+
+  set_current_value(current_value)
+  {
+    if (this.operator)
+      this.rval = current_value;
+    else
+      this.lval = current_value;
+  }
+
   calculate()
   {
     if (this.lval.length == 0) this.lval = "0";
@@ -71,8 +85,7 @@ class Calculator {
 
   append_number(num)
   {
-    var current_value = this.operator ? this.rval : this.lval;
-    current_value = current_value.toString();
+    var current_value = this.get_current_value();
 
     if (current_value.length < max_numbers_on_display)
     {
@@ -87,10 +100,7 @@ class Calculator {
       }
     }
 
-    if (this.operator)
-      this.rval = current_value;
-    else
-      this.lval = current_value;
+    this.set_current_value(current_value);
 
     this.refresh_display();
   }
@@ -98,24 +108,19 @@ class Calculator {
   append_decimal()
   {
     var decimal_symbol = decimal.description[0];
-    var current_value = this.operator ? this.rval : this.lval;
-    current_value = current_value.toString();
+    var current_value = this.get_current_value();
 
     if ( ! current_value.includes(decimal_symbol))
       current_value+=decimal_symbol;
 
-    if (this.operator)
-      this.rval = current_value;
-    else
-      this.lval = current_value;
+    this.set_current_value(current_value);
 
     this.refresh_display();
   }
 
   set_sign()
   {
-    var current_value = this.operator ? this.rval : this.lval;
-    current_value = current_value.toString();
+    var current_value = this.get_current_value();
 
     if (current_value[0] == '-')
       current_value = current_value.slice(1);
@@ -125,11 +130,7 @@ class Calculator {
         current_value = '-' + current_value;
     }
       
-
-    if (this.operator)
-      this.rval = current_value;
-    else
-      this.lval = current_value;
+    this.set_current_value(current_value);
   }
   
   set_percent()
@@ -226,6 +227,7 @@ class Calculator {
 const numbers_buttons = document.querySelectorAll('.number');
 const operators_buttons = document.querySelectorAll('.operator');
 const function_buttons = document.querySelectorAll('.function');
+const dark_mode_button = document.querySelector('.dark_mode_btn')
 calculator = new Calculator(document.querySelector('.calculator-display'));
 
 numbers_buttons.forEach(button => {
@@ -247,4 +249,13 @@ function_buttons.forEach(button => {
   button.addEventListener('click', () => {
     calculator.do_function(button.dataset.action);
   })
+})
+
+
+dark_mode_button.addEventListener('click', () => {
+  var style = document.getElementById('page_style');
+  if (style.getAttribute('href').includes('darkmode'))
+    style.setAttribute('href', 'css/stylesheet.css')
+  else
+    style.setAttribute('href', 'css/darkmode.css')
 })
