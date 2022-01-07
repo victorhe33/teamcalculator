@@ -72,12 +72,13 @@ body {
 }
 /* Layout */
 .calculator{
-    margin-left: auto;
-    margin-right: auto;
+/*     margin-left: auto;
+    margin-right: auto; */
+    margin: auto;
     vertical-align: middle;
     display: flex;
     width: 300px;
-    min-height: 384px;
+    height: 384px;
     background-color: var(--bg-calc);
     padding: 8px;
     border: var(--border-calc) solid 5px;
@@ -206,15 +207,16 @@ body {
     flex-direction: column;
     /* opacity: 50%; */
     font-size: 22px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 30px;
+    margin: 30px auto auto auto;
 }
 .legend .material-icons{
     color: red;
 }
 .legend ul {
     list-style-type: none;
+}
+.legend .hidden {
+    visibility: hidden;
 }
 @keyframes runaway-btns {
     from { transform: translateX(0) }
