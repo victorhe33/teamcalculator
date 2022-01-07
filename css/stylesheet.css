@@ -210,13 +210,13 @@ body {
     margin: 30px auto auto auto;
 }
 .legend .material-icons{
-    color: red;
+    color: rgba(121, 121, 121, 0.349);
 }
 .legend ul {
     list-style-type: none;
 }
-.legend .hidden {
-    visibility: hidden;
+.active.material-icons {
+    color: red;
 }
 @keyframes runaway-btns {
     from { transform: translateX(0) }

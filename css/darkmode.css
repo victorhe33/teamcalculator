@@ -180,17 +180,17 @@ body {
     padding-left: 0px;
     padding-right: 30px;
     flex-direction: column;
-    color: whitesmoke;   
+    color: rgb(240, 204, 204);   
     margin: 30px auto auto auto;
 }
 .legend .material-icons{
-    color: red;
+    color: rgba(82, 82, 82, 0.5);
 }
 .legend ul {
     list-style-type: none;
 }
-.legend .hidden {
-    visibility: hidden;
+.legend .active {
+    color: red;
 }
 @keyframes runaway-btns {
     from { transform: translateX(0) }
