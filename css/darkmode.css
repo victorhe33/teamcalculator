@@ -52,7 +52,7 @@ body {
     vertical-align: middle;
     display: flex;
     width: 300px;
-    height: 384px;
+    min-height: 384px;
     background-color: var(--bg-calc);
     padding: 8px;
     border: var(--border-calc) solid 5px;
@@ -68,7 +68,8 @@ body {
     font-size: 65px;
     font-family: Digital7,digital7, sans-serif;
     padding-right: 5px;
-    padding-top: 8px;
+    padding-top: 0px;
+    padding-bottom: 13px;
     color: var(--color-calc-disp);
     height: 60px;
     margin-bottom: 5px;
