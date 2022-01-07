@@ -94,10 +94,13 @@ body {
     font-size: 65px;
     font-family: Digital7,digital7, sans-serif;
     padding-right: 5px;
-    padding-top: 0px;
-    /*  padding-bottom: 13px; */
+/*     padding-top: 0px;
+    padding-bottom: 5px; */
     color: var(--color-calc-disp);
-    max-height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 60px;
     margin-bottom: 5px;
     /* border-radius: 15px; */
     text-align: right;
@@ -122,7 +125,6 @@ body {
    padding-top: 15px;
    padding-bottom: 15px; 
    max-height: 60px;
-   
    background-color: var(--bg-calc-btn);
    width: 74px;
    font-size: 25px;
