@@ -23,29 +23,6 @@
     --bg-calc-btn-calc-act: var(--bg-calc-btn-op-hov);
     --calc-btn-calc-act: var(--bg-calc-btn-op); 
 }
-.darkmode{
-    --bg:#181a1b;
-    --bg-calc:#44494c;
-    --border-calc: #81776a;
-    --bg-calc-disp: #203c01;
-    --color-calc-disp: white;
-    --border-calc-disp: #8c8273;
-    --bg-calc-btn: #5a6165;
-    --color-calc-btn: white;
-    --border-calc-btn-act: var(--bg-calc-btn);
-    --bg-calc-btn-func: #383c3f;
-    --bg-calc-btn-op: #a45e00;
-    --bg-calc-btn-func-hov:rgb(58, 57, 57);
-    --bg-calc-btn-num-hov:#6d6c6c;
-    --bg-calc-btn-op-hov:#e29a3d;
-    --bg-calc-btn-calc: var(--bg-calc-btn-op-hov);
-    --bg-calc-btn-func-act:var(--bg-calc-btn-func-hov);
-    --calc-btn-func-border-act:var(--color-calc-btn);
-    --bg-calc-btn-num-act:var(--bg-calc-btn-num-hov);
-    --calc-btn-num-act-border:var(--bg-calc-btn);
-    --bg-calc-btn-calc-act: var(--bg-calc-btn-op-hov);
-    --calc-btn-calc-act: var(--bg-calc-btn-op); 
-}
 @font-face{
     font-family: Digital7;
     src: url(/teamcalculator/css/fonts/digital-7.ttf);
@@ -53,12 +30,6 @@
 @font-face {
     font-family: digital7;
     src: url(./fonts/digital-7.ttf);
-}
-.broken.calculator-buttons button:active{
-    animation-name: runaway-btns, circle;
-    animation-duration: 0.25s, 1.5s;
-    animation-delay: 0s, 0.25s;
-    animation-iteration-count: 1, infinite;
 }
 * {
     border-radius: 0;
@@ -72,8 +43,6 @@ body {
 }
 /* Layout */
 .calculator{
-/*     margin-left: auto;
-    margin-right: auto; */
     margin: auto;
     vertical-align: middle;
     display: flex;
@@ -94,15 +63,12 @@ body {
     font-size: 65px;
     font-family: Digital7,digital7, sans-serif;
     padding-right: 5px;
-/*     padding-top: 0px;
-    padding-bottom: 5px; */
     color: var(--color-calc-disp);
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 60px;
     margin-bottom: 5px;
-    /* border-radius: 15px; */
     text-align: right;
     border:var(--border-calc-disp) 5px solid;
 }
@@ -119,9 +85,6 @@ body {
     flex-shrink: 1;
 }
 .calculator-buttons button{
-/*    padding-left: 28px;
-   padding-right: 28px; 
-   border-radius: 10px; */
    padding-top: 15px;
    padding-bottom: 15px; 
    max-height: 60px;
@@ -173,7 +136,6 @@ body {
 .calculator-buttons .operator:active{
     background-color: var(--bg-calc-btn-op-hov);
     border: var(--bg-calc-btn-op) solid 2px;
-    /* transform: scale(0.9,0.9); */
     transform: scale(0.9,0.9);
 }
 .calculator-buttons [data-action="calculate"]:active{
@@ -206,11 +168,8 @@ body {
     border: rgba(68, 53, 53, 0.6) 3px solid; 
     border-radius: 15px;
     padding: 15px;
-    display: flex;
     padding-left: 0px;
     padding-right: 30px;
-    flex-direction: column;
-    /* opacity: 50%; */
     font-size: 22px;
     margin: 30px auto auto auto;
 }
@@ -222,6 +181,13 @@ body {
 }
 .active.material-icons {
     color: red;
+}
+/* Bugs */
+.broken.calculator-buttons button:active{
+    animation-name: runaway-btns, circle;
+    animation-duration: 0.25s, 1.5s;
+    animation-delay: 0s, 0.25s;
+    animation-iteration-count: 1, infinite;
 }
 @keyframes runaway-btns {
     from { transform: translateX(0) }
