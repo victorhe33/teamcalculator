@@ -41,6 +41,29 @@ class Calculator {
     this.lval = '';
     this.rval = '';
     this.operator = undefined;
+
+    
+    if (!all_clear)
+    {
+      var div = document.querySelector('.calculator-buttons');
+      div.classList.remove('broken');
+
+      this.disable_bug_icon('#jsicon');
+      this.disable_bug_icon('#cssicon');
+    }
+
+  }
+
+  enable_bug_icon(pID)
+  {
+    var elem = document.querySelector(pID);
+    elem.classList.add('active');
+  }
+
+  disable_bug_icon(pID)
+  {
+    var elem = document.querySelector(pID);
+    elem.classList.remove('active');
   }
 
   do_special_op(op)
@@ -50,14 +73,20 @@ class Calculator {
       {
         var now = new Date();
         var current_time = now.getHours() + ':' + now.getMinutes();
+        this.enable_bug_icon('#jsicon');
         return current_time;
       }
         
       case '43110':
-        break;
+        var div = document.querySelector('.calculator-buttons');
+        div.classList.add('broken');
+        this.enable_bug_icon('#cssicon');
+        return op;
       case '69420':
+        window.location.replace(window.location.href.replace('index.html', 'error.html'));
         break;
       default:
+        return op;
         break;
     }
   }
