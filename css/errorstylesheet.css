@@ -25,3 +25,26 @@ body{
     height: 225px;
     width: 225px;
 }
+
+    .hidden-link {
+      background: rgb(255, 255, 255);
+      padding: .5rem 1.5rem;
+      border: solid rgb(55, 126, 247) 2px;
+      border-radius: 0 0 0.5rem 0.5rem;
+      left: 0.5rem;
+      font-size: 20px;
+      font-weight: 700;
+      position:absolute; 
+      transform: translateY(-120%);
+      transition: transform 325ms ease-in;
+    }
+
+    .hidden-link:focus {
+      transform: translateY(0);
+    }
+
+    a:visited.hidden-link,
+    a:link.hidden-link  {
+      text-decoration: none;
+      color: rgb(55, 126, 247);
+    }
