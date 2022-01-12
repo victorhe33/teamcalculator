@@ -9,13 +9,6 @@ Team V-MasterDrill Collab Project
 
 - [@Mentayolo](https://github.com/andreiaugustin) - Javascript
 
-## Authors
-
-- [@CoffeeNomad](https://github.com/CoffeeNomad) - HTML
-- [@Parth](https://github.com/parth2187) - JavaScript
-- [@CometCoder192](https://github.com/CometCoder192) - CSS
-
-
 ## Deployment
 
 To open this project, click [here.](https://github.com/victorhe33/teamcalculator)
