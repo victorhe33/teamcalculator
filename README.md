@@ -1,7 +1,7 @@
 # teamcalculator #
 Team V-MasterDrill Collab Project
 
-## Role s##
+## Roles ##
 
 **HTML:** Slickvic33 (me)
 
